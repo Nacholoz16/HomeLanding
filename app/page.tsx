@@ -4,15 +4,16 @@ import { useEffect } from "react"
 
 const Page = () => {
   useEffect(() => {
-    // Carousel functionality
     let currentSlide = 0
     const slides = document.querySelectorAll(".carousel-slide")
     const dots = document.querySelectorAll(".carousel-dot")
+    const carouselContainer = document.querySelector<HTMLElement>(".carousel-container");
 
     const showSlide = (index: number) => {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle("active", i === index)
-      })
+      if (carouselContainer) {
+        carouselContainer.style.transform = `translateX(-${index * 33.333}%)`
+      }
+
       dots.forEach((dot, i) => {
         dot.classList.toggle("bg-white", i === index)
         dot.classList.toggle("bg-white/50", i !== index)
@@ -62,16 +63,35 @@ const Page = () => {
       mobileMenu?.classList.toggle("hidden")
     })
 
-    // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
       anchor.addEventListener("click", function (e) {
         e.preventDefault()
-        const target = document.querySelector(this.getAttribute("href") as string)
+        const target = document.querySelector(anchor.getAttribute("href") as string) as HTMLElement;
         if (target) {
-          target.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          })
+          const targetPosition = target.offsetTop - 80 // Account for fixed navbar
+          const startPosition = window.pageYOffset
+          const distance = targetPosition - startPosition
+          const duration = 1000 // 1 second
+          let start: number | null = null
+
+          function animation(currentTime: number) {
+            if (start === null) start = currentTime
+            const timeElapsed = currentTime - start
+            const run = easeInOutQuad(timeElapsed, startPosition, distance, duration)
+            window.scrollTo(0, run)
+            if (timeElapsed < duration) requestAnimationFrame(animation)
+          }
+
+          // Easing function for smooth animation
+          function easeInOutQuad(t: number, b: number, c: number, d: number) {
+            t /= d / 2
+            if (t < 1) return (c / 2) * t * t + b
+            t--
+            return (-c / 2) * (t * (t - 2) - 1) + b
+          }
+
+          requestAnimationFrame(animation)
+
           // Close mobile menu if open
           mobileMenu?.classList.add("hidden")
         }
@@ -197,75 +217,77 @@ const Page = () => {
 
       {/* Hero Section with Carousel */}
       <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="carousel-container w-full h-screen relative">
-          {/* Slide 1 */}
-          <div className="carousel-slide active absolute inset-0">
-            <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/30 z-10"></div>
-            <img
-              src="/kitchen-renovation.png"
-              alt="Remodelación moderna de cocina"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 z-20 flex items-center justify-center">
-              <div className="text-center text-white max-w-4xl px-4">
-                <h2 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">Transformamos tu Hogar</h2>
-                <p className="text-xl md:text-2xl mb-8 leading-relaxed">
-                  15 años creando espacios únicos con la más alta calidad y diseño innovador
-                </p>
-                <a
-                  href="#contacto"
-                  className="inline-block bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105"
-                >
-                  Solicita tu Cotización
-                </a>
+        <div className="carousel-wrapper w-full h-screen relative overflow-hidden">
+          <div className="carousel-container flex w-[300%] h-full transition-transform duration-700 ease-in-out">
+            {/* Slide 1 */}
+            <div className="carousel-slide w-1/3 relative flex-shrink-0">
+              <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/30 z-10"></div>
+              <img
+                src="/kitchen-renovation.png"
+                alt="Remodelación moderna de cocina"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 z-20 flex items-center justify-center">
+                <div className="text-center text-white max-w-4xl px-4">
+                  <h2 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">Transformamos tu Hogar</h2>
+                  <p className="text-xl md:text-2xl mb-8 leading-relaxed">
+                    15 años creando espacios únicos con la más alta calidad y diseño innovador
+                  </p>
+                  <a
+                    href="#contacto"
+                    className="inline-block bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105"
+                  >
+                    Solicita tu Cotización
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Slide 2 */}
-          <div className="carousel-slide absolute inset-0">
-            <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/30 z-10"></div>
-            <img
-              src="/luxury-modern-bathroom.png"
-              alt="Remodelación de baño de lujo"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 z-20 flex items-center justify-center">
-              <div className="text-center text-white max-w-4xl px-4">
-                <h2 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">Calidad Garantizada</h2>
-                <p className="text-xl md:text-2xl mb-8 leading-relaxed">
-                  Cada proyecto es único, diseñado especialmente para ti con materiales premium
-                </p>
-                <a
-                  href="#portfolio"
-                  className="inline-block bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105"
-                >
-                  Ver Nuestros Proyectos
-                </a>
+            {/* Slide 2 */}
+            <div className="carousel-slide w-1/3 relative flex-shrink-0">
+              <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/30 z-10"></div>
+              <img
+                src="/luxury-modern-bathroom.png"
+                alt="Remodelación de baño de lujo"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 z-20 flex items-center justify-center">
+                <div className="text-center text-white max-w-4xl px-4">
+                  <h2 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">Calidad Garantizada</h2>
+                  <p className="text-xl md:text-2xl mb-8 leading-relaxed">
+                    Cada proyecto es único, diseñado especialmente para ti con materiales premium
+                  </p>
+                  <a
+                    href="#portfolio"
+                    className="inline-block bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105"
+                  >
+                    Ver Nuestros Proyectos
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Slide 3 */}
-          <div className="carousel-slide absolute inset-0">
-            <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/30 z-10"></div>
-            <img
-              src="/modern-home-renovation.png"
-              alt="Remodelación completa de interior"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 z-20 flex items-center justify-center">
-              <div className="text-center text-white max-w-4xl px-4">
-                <h2 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">Experiencia Profesional</h2>
-                <p className="text-xl md:text-2xl mb-8 leading-relaxed">
-                  Equipo especializado en remodelaciones integrales con resultados excepcionales
-                </p>
-                <a
-                  href="#servicios"
-                  className="inline-block bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105"
-                >
-                  Conoce Nuestros Servicios
-                </a>
+            {/* Slide 3 */}
+            <div className="carousel-slide w-1/3 relative flex-shrink-0">
+              <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/30 z-10"></div>
+              <img
+                src="/modern-home-renovation.png"
+                alt="Remodelación completa de interior"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 z-20 flex items-center justify-center">
+                <div className="text-center text-white max-w-4xl px-4">
+                  <h2 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">Experiencia Profesional</h2>
+                  <p className="text-xl md:text-2xl mb-8 leading-relaxed">
+                    Equipo especializado en remodelaciones integrales con resultados excepcionales
+                  </p>
+                  <a
+                    href="#servicios"
+                    className="inline-block bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105"
+                  >
+                    Conoce Nuestros Servicios
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -408,12 +430,12 @@ const Page = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Project 1 */}
-            <div className="scroll-reveal group cursor-pointer" data-modal="modal1">
-              <div className="relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105">
+            <div className="scroll-reveal group cursor-pointer portfolio-card" data-modal="modal1">
+              <div className="relative overflow-hidden rounded-lg shadow-lg transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl">
                 <img
                   src="/modern-white-marble-kitchen.png"
                   alt="Cocina Moderna Minimalista"
-                  className="w-full h-64 object-cover"
+                  className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-4 left-4 text-white">
@@ -421,16 +443,17 @@ const Page = () => {
                     <p className="text-sm">Casa Residencial - 2024</p>
                   </div>
                 </div>
+                <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none glass-reflection"></div>
               </div>
             </div>
 
             {/* Project 2 */}
-            <div className="scroll-reveal group cursor-pointer" data-modal="modal2">
-              <div className="relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105">
+            <div className="scroll-reveal group cursor-pointer portfolio-card" data-modal="modal2">
+              <div className="relative overflow-hidden rounded-lg shadow-lg transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl">
                 <img
                   src="/luxury-marble-bathroom.png"
                   alt="Baño de Lujo Contemporáneo"
-                  className="w-full h-64 object-cover"
+                  className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-4 left-4 text-white">
@@ -438,16 +461,17 @@ const Page = () => {
                     <p className="text-sm">Apartamento Premium - 2024</p>
                   </div>
                 </div>
+                <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none glass-reflection"></div>
               </div>
             </div>
 
             {/* Project 3 */}
-            <div className="scroll-reveal group cursor-pointer" data-modal="modal3">
-              <div className="relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105">
+            <div className="scroll-reveal group cursor-pointer portfolio-card" data-modal="modal3">
+              <div className="relative overflow-hidden rounded-lg shadow-lg transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl">
                 <img
                   src="/modern-open-living.png"
                   alt="Sala de Estar Concepto Abierto"
-                  className="w-full h-64 object-cover"
+                  className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-4 left-4 text-white">
@@ -455,16 +479,17 @@ const Page = () => {
                     <p className="text-sm">Casa Familiar - 2023</p>
                   </div>
                 </div>
+                <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none glass-reflection"></div>
               </div>
             </div>
 
             {/* Project 4 */}
-            <div className="scroll-reveal group cursor-pointer" data-modal="modal4">
-              <div className="relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105">
+            <div className="scroll-reveal group cursor-pointer portfolio-card" data-modal="modal4">
+              <div className="relative overflow-hidden rounded-lg shadow-lg transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl">
                 <img
                   src="/modern-master-bedroom-closet.png"
                   alt="Dormitorio Principal con Vestidor"
-                  className="w-full h-64 object-cover"
+                  className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-4 left-4 text-white">
@@ -472,16 +497,17 @@ const Page = () => {
                     <p className="text-sm">Remodelación Integral - 2023</p>
                   </div>
                 </div>
+                <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none glass-reflection"></div>
               </div>
             </div>
 
             {/* Project 5 */}
-            <div className="scroll-reveal group cursor-pointer" data-modal="modal5">
-              <div className="relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105">
+            <div className="scroll-reveal group cursor-pointer portfolio-card" data-modal="modal5">
+              <div className="relative overflow-hidden rounded-lg shadow-lg transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl">
                 <img
                   src="/home-office-built-in-shelving.png"
                   alt="Oficina en Casa Moderna"
-                  className="w-full h-64 object-cover"
+                  className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-4 left-4 text-white">
@@ -489,16 +515,17 @@ const Page = () => {
                     <p className="text-sm">Espacio de Trabajo - 2024</p>
                   </div>
                 </div>
+                <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none glass-reflection"></div>
               </div>
             </div>
 
             {/* Project 6 */}
-            <div className="scroll-reveal group cursor-pointer" data-modal="modal6">
-              <div className="relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105">
+            <div className="scroll-reveal group cursor-pointer portfolio-card" data-modal="modal6">
+              <div className="relative overflow-hidden rounded-lg shadow-lg transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl">
                 <img
                   src="/modern-outdoor-terrace.png"
                   alt="Terraza Exterior Renovada"
-                  className="w-full h-64 object-cover"
+                  className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-4 left-4 text-white">
@@ -506,6 +533,7 @@ const Page = () => {
                     <p className="text-sm">Espacio Exterior - 2023</p>
                   </div>
                 </div>
+                <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none glass-reflection"></div>
               </div>
             </div>
           </div>
@@ -518,7 +546,7 @@ const Page = () => {
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">Contáctanos</h2>
             <p className="text-xl opacity-90 max-w-3xl mx-auto">
-              {'"Transformamos sueños en realidad, un espacio a la vez"'}
+              "Transformamos sueños en realidad, un espacio a la vez"
             </p>
           </div>
 
@@ -708,9 +736,8 @@ const Page = () => {
             </div>
           </div>
           <blockquote className="border-l-4 border-accent pl-4 italic text-muted-foreground">
-            {
-              '"Superaron todas nuestras expectativas. La cocina quedó exactamente como la habíamos soñado. El equipo fue profesional y muy cuidadoso con cada detalle."'
-            }
+            "Superaron todas nuestras expectativas. La cocina quedó exactamente como la habíamos soñado. El equipo fue
+            profesional y muy cuidadoso con cada detalle."
             <footer className="mt-2 font-semibold text-primary">- María González</footer>
           </blockquote>
         </div>
@@ -740,9 +767,8 @@ const Page = () => {
             </div>
           </div>
           <blockquote className="border-l-4 border-accent pl-4 italic text-muted-foreground">
-            {
-              '"Un trabajo impecable. Ahora tenemos un spa en casa. La atención al detalle y la calidad de los materiales es excepcional."'
-            }
+            "Un trabajo impecable. Ahora tenemos un spa en casa. La atención al detalle y la calidad de los materiales
+            es excepcional."
             <footer className="mt-2 font-semibold text-primary">- Carlos Rodríguez</footer>
           </blockquote>
         </div>
@@ -772,9 +798,8 @@ const Page = () => {
             </div>
           </div>
           <blockquote className="border-l-4 border-accent pl-4 italic text-muted-foreground">
-            {
-              '"Transformaron completamente nuestro hogar. El espacio ahora se siente mucho más amplio y moderno. Excelente trabajo en equipo."'
-            }
+            "Transformaron completamente nuestro hogar. El espacio ahora se siente mucho más amplio y moderno. Excelente
+            trabajo en equipo."
             <footer className="mt-2 font-semibold text-primary">- Ana Martínez</footer>
           </blockquote>
         </div>
@@ -804,9 +829,8 @@ const Page = () => {
             </div>
           </div>
           <blockquote className="border-l-4 border-accent pl-4 italic text-muted-foreground">
-            {
-              '"Nuestro dormitorio ahora es nuestro refugio personal. El vestidor es un sueño hecho realidad. Trabajo de primera calidad."'
-            }
+            "Nuestro dormitorio ahora es nuestro refugio personal. El vestidor es un sueño hecho realidad. Trabajo de
+            primera calidad."
             <footer className="mt-2 font-semibold text-primary">- Luis y Carmen Pérez</footer>
           </blockquote>
         </div>
@@ -836,9 +860,8 @@ const Page = () => {
             </div>
           </div>
           <blockquote className="border-l-4 border-accent pl-4 italic text-muted-foreground">
-            {
-              '"Ahora tengo el espacio de trabajo perfecto. Cada detalle fue pensado para maximizar la productividad y el confort."'
-            }
+            "Ahora tengo el espacio de trabajo perfecto. Cada detalle fue pensado para maximizar la productividad y el
+            confort."
             <footer className="mt-2 font-semibold text-primary">- Roberto Silva</footer>
           </blockquote>
         </div>
@@ -868,9 +891,8 @@ const Page = () => {
             </div>
           </div>
           <blockquote className="border-l-4 border-accent pl-4 italic text-muted-foreground">
-            {
-              '"La terraza se convirtió en nuestro lugar favorito de la casa. Perfecta para recibir invitados y relajarse al aire libre."'
-            }
+            "La terraza se convirtió en nuestro lugar favorito de la casa. Perfecta para recibir invitados y relajarse
+            al aire libre."
             <footer className="mt-2 font-semibold text-primary">- Patricia y Miguel Torres</footer>
           </blockquote>
         </div>
