@@ -145,8 +145,8 @@
   position: relative;
 }
 
-/* Agregando efecto de reflejo de vidrio para portfolio */
-.portfolio-card .glass-reflection {
+/* Agregando efecto de reflejo de vidrio para portafolio */
+.portafolio-card .glass-reflection {
   background: linear-gradient(
     135deg,
     rgba(255, 255, 255, 0.3) 0%,

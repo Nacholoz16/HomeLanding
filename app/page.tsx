@@ -115,7 +115,7 @@ const Page = () => {
       }
     }
 
-    // Add click handlers for portfolio items
+    // Add click handlers for portafolio items
     document.querySelectorAll("[data-modal]").forEach((item) => {
       item.addEventListener("click", () => {
         const modalId = item.getAttribute("data-modal")
@@ -175,10 +175,10 @@ const Page = () => {
                   Servicios
                 </a>
                 <a
-                  href="#portfolio"
+                  href="#portafolio"
                   className="text-foreground hover:text-accent transition-colors duration-200 font-medium"
                 >
-                  Portfolio
+                  Portafolio
                 </a>
                 <a
                   href="#contacto"
@@ -205,8 +205,8 @@ const Page = () => {
             <a href="#servicios" className="block px-3 py-2 text-foreground hover:text-accent transition-colors">
               Servicios
             </a>
-            <a href="#portfolio" className="block px-3 py-2 text-foreground hover:text-accent transition-colors">
-              Portfolio
+            <a href="#portafolio" className="block px-3 py-2 text-foreground hover:text-accent transition-colors">
+              portafolio
             </a>
             <a href="#contacto" className="block px-3 py-2 text-foreground hover:text-accent transition-colors">
               Contacto
@@ -258,7 +258,7 @@ const Page = () => {
                     Cada proyecto es único, diseñado especialmente para ti con materiales premium
                   </p>
                   <a
-                    href="#portfolio"
+                    href="#portafolio"
                     className="inline-block bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105"
                   >
                     Ver Nuestros Proyectos
@@ -418,11 +418,11 @@ const Page = () => {
       {/* Section Separator */}
       <div className="h-16 bg-gradient-to-l from-accent/10 to-transparent"></div>
 
-      {/* Portfolio Section */}
-      <section id="portfolio" className="py-20 bg-background">
+      {/* portafolio Section */}
+      <section id="portafolio" className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">Nuestro Portfolio</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">Nuestro portafolio</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Descubre algunos de nuestros proyectos más destacados y la transformación que hemos logrado
             </p>
@@ -430,7 +430,7 @@ const Page = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Project 1 */}
-            <div className="scroll-reveal group cursor-pointer portfolio-card" data-modal="modal1">
+            <div className="scroll-reveal group cursor-pointer portafolio-card" data-modal="modal1">
               <div className="relative overflow-hidden rounded-lg shadow-lg transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl">
                 <img
                   src="/modern-white-marble-kitchen.png"
@@ -448,7 +448,7 @@ const Page = () => {
             </div>
 
             {/* Project 2 */}
-            <div className="scroll-reveal group cursor-pointer portfolio-card" data-modal="modal2">
+            <div className="scroll-reveal group cursor-pointer portafolio-card" data-modal="modal2">
               <div className="relative overflow-hidden rounded-lg shadow-lg transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl">
                 <img
                   src="/luxury-marble-bathroom.png"
@@ -466,7 +466,7 @@ const Page = () => {
             </div>
 
             {/* Project 3 */}
-            <div className="scroll-reveal group cursor-pointer portfolio-card" data-modal="modal3">
+            <div className="scroll-reveal group cursor-pointer portafolio-card" data-modal="modal3">
               <div className="relative overflow-hidden rounded-lg shadow-lg transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl">
                 <img
                   src="/modern-open-living.png"
@@ -484,7 +484,7 @@ const Page = () => {
             </div>
 
             {/* Project 4 */}
-            <div className="scroll-reveal group cursor-pointer portfolio-card" data-modal="modal4">
+            <div className="scroll-reveal group cursor-pointer portafolio-card" data-modal="modal4">
               <div className="relative overflow-hidden rounded-lg shadow-lg transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl">
                 <img
                   src="/modern-master-bedroom-closet.png"
@@ -502,7 +502,7 @@ const Page = () => {
             </div>
 
             {/* Project 5 */}
-            <div className="scroll-reveal group cursor-pointer portfolio-card" data-modal="modal5">
+            <div className="scroll-reveal group cursor-pointer portafolio-card" data-modal="modal5">
               <div className="relative overflow-hidden rounded-lg shadow-lg transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl">
                 <img
                   src="/home-office-built-in-shelving.png"
@@ -520,7 +520,7 @@ const Page = () => {
             </div>
 
             {/* Project 6 */}
-            <div className="scroll-reveal group cursor-pointer portfolio-card" data-modal="modal6">
+            <div className="scroll-reveal group cursor-pointer portafolio-card" data-modal="modal6">
               <div className="relative overflow-hidden rounded-lg shadow-lg transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl">
                 <img
                   src="/modern-outdoor-terrace.png"
@@ -711,7 +711,7 @@ const Page = () => {
         </div>
       </section>
 
-      {/* Modals for Portfolio */}
+      {/* Modals for portafolio */}
       <div id="modal1" className="modal">
         <div className="modal-content">
           <span className="close">&times;</span>
