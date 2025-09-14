@@ -1,6 +1,26 @@
 "use client"
 
+import Carousel from "@/components/Carousel";
 import { useEffect } from "react"
+
+const slides = [
+  {
+    image: "/modern-home-renovation.png",
+    title: "Experiencia Internacional",
+    description: "Con 2 años en Estados Unidos y más de 5 años en remodelaciones, llevamos la experiencia que tu hogar merece.",
+  },
+  {
+    image: "kitchen-renovation.png",
+    title: "Especialización en Remodelaciones",
+    description: "Transformamos baños, cocinas y espacios integrales con diseño, funcionalidad y estilo.",
+  },
+  {
+    image: "/luxury-modern-bathroom.png",
+    title: "Excelencia Profesional",
+    description: "Compromiso con acabados de calidad y atención a los detalles, generando confianza en cada proyecto.",
+  },
+];
+
 
 const Page = () => {
   useEffect(() => {
@@ -175,6 +195,12 @@ const Page = () => {
                   Servicios
                 </a>
                 <a
+                  href="#quienes-somos"
+                  className="text-foreground hover:text-accent transition-colors duration-200 font-medium"
+                >
+                  Quienes somos
+                </a>
+                <a
                   href="#portafolio"
                   className="text-foreground hover:text-accent transition-colors duration-200 font-medium"
                 >
@@ -205,8 +231,11 @@ const Page = () => {
             <a href="#servicios" className="block px-3 py-2 text-foreground hover:text-accent transition-colors">
               Servicios
             </a>
+            <a href="#quienes-somos" className="block px-3 py-2 text-foreground hover:text-accent transition-colors">
+              Quienes Somos
+            </a>
             <a href="#portafolio" className="block px-3 py-2 text-foreground hover:text-accent transition-colors">
-              portafolio
+              Portafolio
             </a>
             <a href="#contacto" className="block px-3 py-2 text-foreground hover:text-accent transition-colors">
               Contacto
@@ -415,6 +444,28 @@ const Page = () => {
         </div>
       </section>
 
+      {/* Section Separator */}
+
+      <div className="h-16 bg-gradient-to-l from-accent/10 to-transparent"></div>
+      <section id="quienes-somos" className="py-20 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">Quienes Somos</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto ">
+              Nos especializamos en remodelación de baños, cocinas y proyectos integrales, ofreciendo excelencia profesional,
+              cumplimiento de plazos y acabados de calidad que generan confianza.
+            </p>
+            <div className="p-4">
+              <Carousel slides={slides} interval={5000} />
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+      </section>
       {/* Section Separator */}
       <div className="h-16 bg-gradient-to-l from-accent/10 to-transparent"></div>
 
