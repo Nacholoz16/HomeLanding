@@ -243,10 +243,55 @@
   font-size: 2rem;
   font-weight: bold;
   cursor: pointer;
-  color: var(--muted-foreground);
+  color: #2464ad;
   transition: color 0.2s;
 }
 
 .close:hover {
   color: var(--foreground);
 }
+
+
+
+/* Shine minimalista para el botón */
+.shine {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+
+  /* inicio oculto a la izquierda + inclinación */
+  transform: skewX(-20deg) translateX(-150%);
+  transition: transform 0.8s ease;
+
+  /* franja de brillo */
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.4) 50%,
+    rgba(255,255,255,0) 100%
+  );
+}
+
+/* Al pasar el mouse sobre el contenedor .group, la franja se mueve */
+.group:hover .shine {
+  transform: skewX(-20deg) translateX(150%);
+}
+
+/* Respecto a la accesibilidad: usuarios que prefieren menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  .shine {
+    transition: none;
+    transform: none;
+  }
+}
+
+/*Slider comparacion*/
+  img-comparison-slider {
+    --divider-width: 5px;
+    --divider-color: #2464ad;
+    --handle-position-start: 20%;
+    --default-handle-width: 50px;
+    --default-handle-color: #2464ad;
+    --defaul-handdlewidth-hover: 50px;
+  }

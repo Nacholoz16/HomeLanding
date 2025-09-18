@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 
 interface Slide {
     image: string;
-    title: string;
-    description: string;
+
 }
 
 interface CarouselProps {
@@ -46,24 +45,12 @@ const Carousel: React.FC<CarouselProps> = ({ slides, interval = 3000 }) => {
                 {slides.map((slide, index) => (
                     <div key={index} className="w-full flex-shrink-0 relative">
                         {/* Imagen */}
-                        <img 
+                        <img
                             src={slide.image}
                             alt={`slide-${index}`}
-                            className="w-full h-[35rem] sm:h-[40rem] object-cover"
+                            className="w-full h-64 object-cover rounded-lg mb-6"
                         />
 
-                        {/* Gradiente */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent z-0"></div>
-
-                        {/* Texto */}
-                        <div className="absolute bottom-10 left-6 text-white z-10 max-w-xl sm:max-w-2xl p-5 text-left">
-                            <h2 className="text-3xl sm:text-4xl font-bold drop-shadow-lg">
-                                {slide.title}
-                            </h2>
-                            <p className="mt-2 text-sm sm:text-lg drop-shadow-md">
-                                {slide.description}
-                            </p>
-                        </div>
                     </div>
                 ))}
             </div>
@@ -71,19 +58,19 @@ const Carousel: React.FC<CarouselProps> = ({ slides, interval = 3000 }) => {
             {/* Botones */}
             <button
                 onClick={prevSlide}
-                className="absolute top-1/2 left-2 transform -translate-y-1/2 text-white bg-black/0 p-3 rounded-full hover:bg-black/60 transition"
+                className="absolute top-1/2 left-2 transform -translate-y-1/2 text-white bg-black/0 p-3 rounded-full hover:bg-white/50 transition"
             >
                 ◀
             </button>
             <button
                 onClick={nextSlide}
-                className="absolute top-1/2 right-2 transform -translate-y-1/2 text-white bg-black/0 p-3 rounded-full hover:bg-black/60 transition"
+                className=" absolute top-1/2 right-2 transform -translate-y-1/2 text-white bg-black/0 p-3 rounded-full hover:bg-white/50 transition"
             >
                 ▶
             </button>
 
             {/* Indicadores */}
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
+            <div className="absolute bottom-7 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
                 {slides.map((_, index) => (
                     <span
                         key={index}

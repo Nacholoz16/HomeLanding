@@ -2,6 +2,8 @@
 
 import Carousel from "@/components/Carousel";
 import { useEffect } from "react"
+import { ImgComparisonSlider } from "@img-comparison-slider/react";
+import Carousel_modal from "@/components/Carousel_modal";
 
 const slides = [
   {
@@ -12,12 +14,12 @@ const slides = [
   {
     image: "kitchen-renovation.png",
     title: "Especialización en Remodelaciones",
-    description: "Transformamos baños, cocinas y espacios integrales con diseño, funcionalidad y estilo.",
+    description: "Transformamos baños, cocinas, dormitorios y diversos espacios con diseño, funcionalidad y profesionalismo.",
   },
   {
     image: "/luxury-modern-bathroom.png",
     title: "Excelencia Profesional",
-    description: "Compromiso con acabados de calidad y atención a los detalles, generando confianza en cada proyecto.",
+    description: "Compromiso con acabados de calidad y atención a los detalles, generamos confianza en cada proyecto.",
   },
 ];
 
@@ -264,10 +266,13 @@ const Page = () => {
                   </p>
                   <a
                     href="#contacto"
-                    className="inline-block bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105"
+                    className="group relative inline-block overflow-hidden bg-black text-white border border-black px-10 py-4 rounded-lg text-lg font-medium tracking-wide transition-all duration-300 transform hover:scale-105  "
                   >
-                    Solicita tu Cotización
+                    <span className="relative z-10">Solicita tu Cotización</span>
+                    <span className="shine" aria-hidden="true"></span>
                   </a>
+
+
                 </div>
               </div>
             </div>
@@ -287,10 +292,11 @@ const Page = () => {
                     Cada proyecto es único, diseñado especialmente para ti con materiales premium
                   </p>
                   <a
-                    href="#portafolio"
-                    className="inline-block bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105"
+                    href="#contacto"
+                    className="group relative inline-block overflow-hidden bg-black text-white border border-black px-10 py-4 rounded-lg text-lg font-medium tracking-wide transition-all duration-300 transform hover:scale-105  "
                   >
-                    Ver Nuestros Proyectos
+                    <span className="relative z-10">Ve nuestros proyectos</span>
+                    <span className="shine" aria-hidden="true"></span>
                   </a>
                 </div>
               </div>
@@ -311,10 +317,11 @@ const Page = () => {
                     Equipo especializado en remodelaciones integrales con resultados excepcionales
                   </p>
                   <a
-                    href="#servicios"
-                    className="inline-block bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105"
+                    href="#contacto"
+                    className="group relative inline-block overflow-hidden bg-black text-white border border-black px-10 py-4 rounded-lg text-lg font-medium tracking-wide transition-all duration-300 transform hover:scale-105  "
                   >
-                    Conoce Nuestros Servicios
+                    <span className="relative z-10">Conoce nuestros servicios</span>
+                    <span className="shine" aria-hidden="true"></span>
                   </a>
                 </div>
               </div>
@@ -416,26 +423,25 @@ const Page = () => {
             <div className="scroll-reveal flex flex-col lg:flex-row items-center gap-12">
               <div className="lg:w-1/2">
                 <img
-                  src="/modern-living-room-renovation.png"
+                  src="dormitorio-remodelacion-servicios.jpg"
                   alt="Remodelación integral"
                   className="w-full h-80 object-cover rounded-lg shadow-lg"
                 />
               </div>
               <div className="lg:w-1/2 space-y-6">
-                <h3 className="text-3xl font-bold text-primary">Remodelación Integral</h3>
+                <h3 className="text-3xl font-bold text-primary">Remodelación de Dormitorios</h3>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Proyectos completos de transformación de hogar. Desde la planificación hasta la entrega final,
-                  manejamos cada aspecto de tu remodelación con un enfoque integral y coordinado.
+                  Renovamos dormitorios para crear espacios cómodos y personalizados. Mejoramos la iluminación, el almacenamiento y el diseño para lograr ambientes acogedores y funcionales.
                 </p>
                 <ul className="space-y-2 text-muted-foreground">
                   <li className="flex items-center">
-                    <span className="text-accent mr-2">✓</span> Gestión completa del proyecto
+                    <span className="text-accent mr-2">✓</span> Diseño personalizado de dormitorios
                   </li>
                   <li className="flex items-center">
-                    <span className="text-accent mr-2">✓</span> Coordinación de especialistas
+                    <span className="text-accent mr-2">✓</span> Optimización de espacios y almacenamiento
                   </li>
                   <li className="flex items-center">
-                    <span className="text-accent mr-2">✓</span> Entrega llave en mano
+                    <span className="text-accent mr-2">✓</span> Acabados modernos y confortables
                   </li>
                 </ul>
               </div>
@@ -445,16 +451,15 @@ const Page = () => {
       </section>
 
       {/* Section Separator */}
-
+      {/* Carrusel experiencia */}
       <div className="h-16 bg-gradient-to-l from-accent/10 to-transparent"></div>
+
       <section id="quienes-somos" className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">Quienes Somos</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto ">
-              Nos especializamos en remodelación de baños, cocinas y proyectos integrales, ofreciendo excelencia profesional,
-              cumplimiento de plazos y acabados de calidad que generan confianza.
-            </p>
+              Con experiencia internacional, transformamos baños, cocinas y dormitorios con calidad, confianza y resultados que destacan.</p>
             <div className="p-4">
               <Carousel slides={slides} interval={5000} />
 
@@ -465,6 +470,51 @@ const Page = () => {
 
         </div>
 
+      </section>
+      {/* Section Separator */}
+      <div className="h-16 bg-gradient-to-l from-accent/10 to-transparent"></div>
+
+      <section id="remodelaciones" className="py-20 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">Remodelacion Integral</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Renovamos tus espacios con diseño y funcionalidad, adaptándonos a tus necesidades para crear un hogar único y acogedor.
+            </p>
+          </div>
+          {/* Dormitorio Niño */}
+          <div className="scroll-reveal flex flex-col lg:flex-row items-center gap-12">
+            <div className="lg:w-1/2">
+              <img
+                src="/dormitorio_niño.jpg"
+                alt="Remodelación Dormitorio Niño"
+                className="w-full h-80 object-cover rounded-lg shadow-lg"
+              />
+            </div>
+            <div className="lg:w-1/2 space-y-6">
+              <h3 className="text-3xl font-bold text-primary">Dormitorio para Niño</h3>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Creamos espacios divertidos y seguros para los más pequeños, con colores alegres, muebles funcionales y áreas de juego integradas para estimular su creatividad.
+              </p>
+            </div>
+          </div>
+          {/* Dormitorio Adulto */}
+          <div className="scroll-reveal flex flex-col lg:flex-row-reverse items-center gap-12">
+            <div className="lg:w-1/2">
+              <img
+                src="/dormitorio_adulto.jpg"
+                alt="Remodelación Dormitorio Adulto"
+                className="w-full h-80 object-cover rounded-lg shadow-lg"
+              />
+            </div>
+            <div className="lg:w-1/2 space-y-6">
+              <h3 className="text-3xl font-bold text-primary">Dormitorio para Adulto</h3>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Diseñamos dormitorios modernos y acogedores para adultos, priorizando el confort, la iluminación y el almacenamiento inteligente para un descanso pleno.
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
       {/* Section Separator */}
       <div className="h-16 bg-gradient-to-l from-accent/10 to-transparent"></div>
@@ -670,11 +720,6 @@ const Page = () => {
                   </a>
                   <a href="#" className="bg-accent hover:bg-accent/90 p-3 rounded-lg transition-colors duration-200">
                     <svg className="w-6 h-6 text-accent-foreground" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001 12.017.001z" />
-                    </svg>
-                  </a>
-                  <a href="#" className="bg-accent hover:bg-accent/90 p-3 rounded-lg transition-colors duration-200">
-                    <svg className="w-6 h-6 text-accent-foreground" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                     </svg>
                   </a>
@@ -682,7 +727,7 @@ const Page = () => {
               </div>
             </div>
 
-            {/* Contact Form */}
+            {/* Formulario Contacto */}
             <div className="bg-background/10 backdrop-blur-sm p-8 rounded-lg">
               <h3 className="text-2xl font-bold mb-6">Solicita tu Cotización Gratuita</h3>
               <form className="space-y-6">
@@ -694,7 +739,7 @@ const Page = () => {
                     type="text"
                     id="name"
                     name="name"
-                    className="w-full px-4 py-3 bg-background/20 border border-primary-foreground/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent text-primary-foreground placeholder-primary-foreground/60"
+                    className="w-full px-4 py-3 bg-[#23272f] border border-primary-foreground/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent text-primary-foreground placeholder-primary-foreground/60"
                     placeholder="Tu nombre completo"
                   />
                 </div>
@@ -706,7 +751,7 @@ const Page = () => {
                     type="email"
                     id="email"
                     name="email"
-                    className="w-full px-4 py-3 bg-background/20 border border-primary-foreground/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent text-primary-foreground placeholder-primary-foreground/60"
+                    className="w-full px-4 py-3 bg-[#23272f] border border-primary-foreground/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent text-primary-foreground placeholder-primary-foreground/60"
                     placeholder="tu@email.com"
                   />
                 </div>
@@ -718,7 +763,7 @@ const Page = () => {
                     type="tel"
                     id="phone"
                     name="phone"
-                    className="w-full px-4 py-3 bg-background/20 border border-primary-foreground/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent text-primary-foreground placeholder-primary-foreground/60"
+                    className="w-full px-4 py-3 bg-[#23272f] border border-primary-foreground/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent text-primary-foreground placeholder-primary-foreground/60"
                     placeholder="+1 (555) 123-4567"
                   />
                 </div>
@@ -729,7 +774,7 @@ const Page = () => {
                   <select
                     id="project"
                     name="project"
-                    className="w-full px-4 py-3 bg-background/20 border border-primary-foreground/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent text-primary-foreground"
+                    className="w-full px-4 py-3 bg-[#23272f] border border-primary-foreground/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent text-primary-foreground"
                   >
                     <option value="">Selecciona un tipo de proyecto</option>
                     <option value="cocina">Remodelación de Cocina</option>
@@ -746,7 +791,7 @@ const Page = () => {
                     id="message"
                     name="message"
                     rows={4}
-                    className="w-full px-4 py-3 bg-background/20 border border-primary-foreground/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent text-primary-foreground placeholder-primary-foreground/60"
+                    className="w-full px-4 py-3 bg-[#23272f] border border-primary-foreground/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent text-primary-foreground placeholder-primary-foreground/60"
                     placeholder="Cuéntanos sobre tu proyecto..."
                   ></textarea>
                 </div>
@@ -765,17 +810,35 @@ const Page = () => {
       {/* Modals for portafolio */}
       <div id="modal1" className="modal">
         <div className="modal-content">
-          <span className="close">&times;</span>
-          <img
-            src="/modern-white-marble-kitchen.png"
-            alt="Cocina Moderna Minimalista"
-            className="w-full h-64 object-cover rounded-lg mb-6"
-          />
-          <h2 className="text-2xl font-bold text-primary mb-4">Cocina Moderna Minimalista</h2>
+          <span className="close rounded-full w-3 h-3 flex items-center justify-center cursor-pointer z-10">&times;</span>
+
+
+          {/* Comparaciones */}
+          <div className="w-full h-64 mb-6 overflow-hidden rounded-lg">
+            <ImgComparisonSlider>
+              <img
+                slot="first"
+                src="/cocina_antes.jpeg"
+                alt="Antes"
+                className="w-full h-full object-cover grayscale"
+              />
+              <img
+                slot="second"
+                src="/modern-white-marble-kitchen.png"
+                alt="Después"
+                className="w-full h-full object-cover"
+              />
+            </ImgComparisonSlider>
+          </div>
+
+          <h2 className="text-2xl font-bold text-primary mb-4">
+            Cocina Moderna Minimalista
+          </h2>
           <p className="text-muted-foreground mb-4">
-            Transformación completa de cocina con diseño minimalista, gabinetes blancos de alta calidad, isla central
-            con mármol Carrara y electrodomésticos de última generación.
+            Proyecto de remodelación integral de una cocina deteriorada en una vivienda abandonada. Se reemplazaron todos los gabinetes viejos por modelos blancos de alta calidad, se instaló una isla central con encimera de mármol Carrara y se incorporaron electrodomésticos de última generación.
+             Se prestó especial atención a la iluminación y al aprovechamiento del espacio para lograr un diseño limpio y funcional.
           </p>
+
           <div className="grid grid-cols-2 gap-4 mb-6">
             <div>
               <h4 className="font-semibold text-primary">Tiempo de Ejecución:</h4>
@@ -786,9 +849,10 @@ const Page = () => {
               <div className="flex text-yellow-400">★★★★★</div>
             </div>
           </div>
+
           <blockquote className="border-l-4 border-accent pl-4 italic text-muted-foreground">
-            "Superaron todas nuestras expectativas. La cocina quedó exactamente como la habíamos soñado. El equipo fue
-            profesional y muy cuidadoso con cada detalle."
+            "Superaron todas nuestras expectativas. La cocina quedó exactamente como la habíamos soñado.
+            El equipo fue profesional y muy cuidadoso con cada detalle."
             <footer className="mt-2 font-semibold text-primary">- María González</footer>
           </blockquote>
         </div>
@@ -796,38 +860,50 @@ const Page = () => {
 
       <div id="modal2" className="modal">
         <div className="modal-content">
-          <span className="close">&times;</span>
+          <span className="close rounded-full w-3 h-3 flex items-center justify-center cursor-pointer z-10">&times;</span>
+          {/* Comparaciones */}
+          <div className="w-full h-64 mb-6 overflow-hidden rounded-lg">
+        <ImgComparisonSlider>
           <img
-            src="/luxury-marble-bathroom.png"
-            alt="Baño de Lujo Contemporáneo"
-            className="w-full h-64 object-cover rounded-lg mb-6"
+            slot="first"
+            src="/baño_mal.jpg"
+            alt="Antes"
+            className="w-full h-full object-cover grayscale"
           />
+          <img
+            slot="second"
+            src="/luxury-marble-bathroom.png"
+            alt="Después"
+            className="w-full h-full object-cover"
+          />
+        </ImgComparisonSlider>
+          </div>
           <h2 className="text-2xl font-bold text-primary mb-4">Baño de Lujo Contemporáneo</h2>
           <p className="text-muted-foreground mb-4">
-            Remodelación completa de baño principal con acabados de lujo, ducha de lluvia, bañera independiente y
-            revestimientos en mármol natural.
+        Remodelación completa de baño principal con acabados de lujo, ducha de lluvia, bañera independiente y
+        revestimientos en mármol natural.
           </p>
           <div className="grid grid-cols-2 gap-4 mb-6">
-            <div>
-              <h4 className="font-semibold text-primary">Tiempo de Ejecución:</h4>
-              <p className="text-muted-foreground">4 semanas</p>
-            </div>
-            <div>
-              <h4 className="font-semibold text-primary">Calificación:</h4>
-              <div className="flex text-yellow-400">★★★★★</div>
-            </div>
+        <div>
+          <h4 className="font-semibold text-primary">Tiempo de Ejecución:</h4>
+          <p className="text-muted-foreground">4 semanas</p>
+        </div>
+        <div>
+          <h4 className="font-semibold text-primary">Calificación:</h4>
+          <div className="flex text-yellow-400">★★★★★</div>
+        </div>
           </div>
           <blockquote className="border-l-4 border-accent pl-4 italic text-muted-foreground">
-            "Un trabajo impecable. Ahora tenemos un spa en casa. La atención al detalle y la calidad de los materiales
-            es excepcional."
-            <footer className="mt-2 font-semibold text-primary">- Carlos Rodríguez</footer>
+        "Un trabajo impecable. Ahora tenemos un spa en casa. La atención al detalle y la calidad de los materiales
+        es excepcional."
+        <footer className="mt-2 font-semibold text-primary">- Carlos Rodríguez</footer>
           </blockquote>
         </div>
       </div>
 
       <div id="modal3" className="modal">
         <div className="modal-content">
-          <span className="close">&times;</span>
+          <span className="close rounded-full w-3 h-3 flex items-center justify-center cursor-pointer z-10">&times;</span>
           <img
             src="/modern-open-living.png"
             alt="Sala de Estar Concepto Abierto"
@@ -858,38 +934,54 @@ const Page = () => {
 
       <div id="modal4" className="modal">
         <div className="modal-content">
-          <span className="close">&times;</span>
-          <img
-            src="/modern-master-bedroom-closet.png"
-            alt="Dormitorio Principal con Vestidor"
-            className="w-full h-64 object-cover rounded-lg mb-6"
-          />
+          <span className="close rounded-full w-3 h-3 flex items-center justify-center cursor-pointer z-10">&times;</span>
+          {/* Carrusel de fotos */}
+          <div className="w-full h-64 mb-6 overflow-hidden rounded-lg flex items-center justify-center">
+        <Carousel_modal 
+          slides={[
+            {
+          image: "/modern-open-living.png ",
+            },
+            {
+          image: "/dormitorio_niño.jpg",
+
+            },
+            {
+          image: "construccion_dormitorio.jpg",
+            },
+            {
+          image: "/luxury-marble-bathroom.png",
+            },
+          ]}
+          interval={4000}
+        />
+          </div>
           <h2 className="text-2xl font-bold text-primary mb-4">Dormitorio Principal</h2>
           <p className="text-muted-foreground mb-4">
-            Remodelación completa de dormitorio principal con vestidor personalizado, baño en suite y sistema de
-            automatización del hogar.
+        Remodelación completa de dormitorio principal con vestidor personalizado, baño en suite y sistema de
+        automatización del hogar.
           </p>
           <div className="grid grid-cols-2 gap-4 mb-6">
-            <div>
-              <h4 className="font-semibold text-primary">Tiempo de Ejecución:</h4>
-              <p className="text-muted-foreground">5 semanas</p>
-            </div>
-            <div>
-              <h4 className="font-semibold text-primary">Calificación:</h4>
-              <div className="flex text-yellow-400">★★★★★</div>
-            </div>
+        <div>
+          <h4 className="font-semibold text-primary">Tiempo de Ejecución:</h4>
+          <p className="text-muted-foreground">5 semanas</p>
+        </div>
+        <div>
+          <h4 className="font-semibold text-primary">Calificación:</h4>
+          <div className="flex text-yellow-400">★★★★★</div>
+        </div>
           </div>
           <blockquote className="border-l-4 border-accent pl-4 italic text-muted-foreground">
-            "Nuestro dormitorio ahora es nuestro refugio personal. El vestidor es un sueño hecho realidad. Trabajo de
-            primera calidad."
-            <footer className="mt-2 font-semibold text-primary">- Luis y Carmen Pérez</footer>
+        "Nuestro dormitorio ahora es nuestro refugio personal. El vestidor es un sueño hecho realidad. Trabajo de
+        primera calidad."
+        <footer className="mt-2 font-semibold text-primary">- Luis y Carmen Pérez</footer>
           </blockquote>
         </div>
       </div>
 
       <div id="modal5" className="modal">
         <div className="modal-content">
-          <span className="close">&times;</span>
+          <span className="close rounded-full w-3 h-3 flex items-center justify-center cursor-pointer z-10">&times;</span>
           <img
             src="/home-office-built-in-shelving.png"
             alt="Oficina en Casa Moderna"
@@ -920,7 +1012,7 @@ const Page = () => {
 
       <div id="modal6" className="modal">
         <div className="modal-content">
-          <span className="close">&times;</span>
+          <span className="close rounded-full w-3 h-3 flex items-center justify-center cursor-pointer z-10">&times;</span>
           <img
             src="/modern-outdoor-terrace.png"
             alt="Terraza Exterior Renovada"
