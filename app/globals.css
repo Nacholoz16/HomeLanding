@@ -250,3 +250,38 @@
 .close:hover {
   color: var(--foreground);
 }
+
+
+
+/* Shine minimalista para el botón */
+.shine {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+
+  /* inicio oculto a la izquierda + inclinación */
+  transform: skewX(-20deg) translateX(-150%);
+  transition: transform 0.8s ease;
+
+  /* franja de brillo */
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.4) 50%,
+    rgba(255,255,255,0) 100%
+  );
+}
+
+/* Al pasar el mouse sobre el contenedor .group, la franja se mueve */
+.group:hover .shine {
+  transform: skewX(-20deg) translateX(150%);
+}
+
+/* Respecto a la accesibilidad: usuarios que prefieren menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  .shine {
+    transition: none;
+    transform: none;
+  }
+}

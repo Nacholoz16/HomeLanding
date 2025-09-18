@@ -12,12 +12,12 @@ const slides = [
   {
     image: "kitchen-renovation.png",
     title: "Especialización en Remodelaciones",
-    description: "Transformamos baños, cocinas y espacios integrales con diseño, funcionalidad y estilo.",
+    description: "Transformamos baños, cocinas, dormitorios y diversos espacios con diseño, funcionalidad y profesionalismo.",
   },
   {
     image: "/luxury-modern-bathroom.png",
     title: "Excelencia Profesional",
-    description: "Compromiso con acabados de calidad y atención a los detalles, generando confianza en cada proyecto.",
+    description: "Compromiso con acabados de calidad y atención a los detalles, generamos confianza en cada proyecto.",
   },
 ];
 
@@ -264,10 +264,13 @@ const Page = () => {
                   </p>
                   <a
                     href="#contacto"
-                    className="inline-block bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105"
+                    className="group relative inline-block overflow-hidden bg-black text-white border border-black px-10 py-4 rounded-lg text-lg font-medium tracking-wide transition-all duration-300 transform hover:scale-105  "
                   >
-                    Solicita tu Cotización
+                    <span className="relative z-10">Solicita tu Cotización</span>
+                    <span className="shine" aria-hidden="true"></span>
                   </a>
+
+
                 </div>
               </div>
             </div>
@@ -287,10 +290,11 @@ const Page = () => {
                     Cada proyecto es único, diseñado especialmente para ti con materiales premium
                   </p>
                   <a
-                    href="#portafolio"
-                    className="inline-block bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105"
+                    href="#contacto"
+                    className="group relative inline-block overflow-hidden bg-black text-white border border-black px-10 py-4 rounded-lg text-lg font-medium tracking-wide transition-all duration-300 transform hover:scale-105  "
                   >
-                    Ver Nuestros Proyectos
+                    <span className="relative z-10">Ve nuestros proyectos</span>
+                    <span className="shine" aria-hidden="true"></span>
                   </a>
                 </div>
               </div>
@@ -311,10 +315,11 @@ const Page = () => {
                     Equipo especializado en remodelaciones integrales con resultados excepcionales
                   </p>
                   <a
-                    href="#servicios"
-                    className="inline-block bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105"
+                    href="#contacto"
+                    className="group relative inline-block overflow-hidden bg-black text-white border border-black px-10 py-4 rounded-lg text-lg font-medium tracking-wide transition-all duration-300 transform hover:scale-105  "
                   >
-                    Conoce Nuestros Servicios
+                    <span className="relative z-10">Conoce nuestros servicios</span>
+                    <span className="shine" aria-hidden="true"></span>
                   </a>
                 </div>
               </div>
@@ -416,26 +421,25 @@ const Page = () => {
             <div className="scroll-reveal flex flex-col lg:flex-row items-center gap-12">
               <div className="lg:w-1/2">
                 <img
-                  src="/modern-living-room-renovation.png"
+                  src="dormitorio-remodelacion-servicios.jpg"
                   alt="Remodelación integral"
                   className="w-full h-80 object-cover rounded-lg shadow-lg"
                 />
               </div>
               <div className="lg:w-1/2 space-y-6">
-                <h3 className="text-3xl font-bold text-primary">Remodelación Integral</h3>
+                <h3 className="text-3xl font-bold text-primary">Remodelación de Dormitorios</h3>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Proyectos completos de transformación de hogar. Desde la planificación hasta la entrega final,
-                  manejamos cada aspecto de tu remodelación con un enfoque integral y coordinado.
+                  Renovamos dormitorios para crear espacios cómodos y personalizados. Mejoramos la iluminación, el almacenamiento y el diseño para lograr ambientes acogedores y funcionales.
                 </p>
                 <ul className="space-y-2 text-muted-foreground">
                   <li className="flex items-center">
-                    <span className="text-accent mr-2">✓</span> Gestión completa del proyecto
+                    <span className="text-accent mr-2">✓</span> Diseño personalizado de dormitorios
                   </li>
                   <li className="flex items-center">
-                    <span className="text-accent mr-2">✓</span> Coordinación de especialistas
+                    <span className="text-accent mr-2">✓</span> Optimización de espacios y almacenamiento
                   </li>
                   <li className="flex items-center">
-                    <span className="text-accent mr-2">✓</span> Entrega llave en mano
+                    <span className="text-accent mr-2">✓</span> Acabados modernos y confortables
                   </li>
                 </ul>
               </div>
@@ -452,8 +456,7 @@ const Page = () => {
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">Quienes Somos</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto ">
-              Nos especializamos en remodelación de baños, cocinas y proyectos integrales, ofreciendo excelencia profesional,
-              cumplimiento de plazos y acabados de calidad que generan confianza.
+              Tras años de experiencia en EE.UU. junto a especialistas, hoy transformamos baños, cocinas y dormitorios con el mismo nivel de calidad internacional: profesionalismo, confianza y resultados que marcan la diferencia.
             </p>
             <div className="p-4">
               <Carousel slides={slides} interval={5000} />
