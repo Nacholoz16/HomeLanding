@@ -474,50 +474,7 @@ const Page = () => {
       {/* Section Separator */}
       <div className="h-16 bg-gradient-to-l from-accent/10 to-transparent"></div>
 
-      <section id="remodelaciones" className="py-20 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">Remodelacion Integral</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Renovamos tus espacios con diseño y funcionalidad, adaptándonos a tus necesidades para crear un hogar único y acogedor.
-            </p>
-          </div>
-          {/* Dormitorio Niño */}
-          <div className="scroll-reveal flex flex-col lg:flex-row items-center gap-12">
-            <div className="lg:w-1/2">
-              <img
-                src="/dormitorio_niño.jpg"
-                alt="Remodelación Dormitorio Niño"
-                className="w-full h-80 object-cover rounded-lg shadow-lg"
-              />
-            </div>
-            <div className="lg:w-1/2 space-y-6">
-              <h3 className="text-3xl font-bold text-primary">Dormitorio para Niño</h3>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                Creamos espacios divertidos y seguros para los más pequeños, con colores alegres, muebles funcionales y áreas de juego integradas para estimular su creatividad.
-              </p>
-            </div>
-          </div>
-          {/* Dormitorio Adulto */}
-          <div className="scroll-reveal flex flex-col lg:flex-row-reverse items-center gap-12">
-            <div className="lg:w-1/2">
-              <img
-                src="/dormitorio_adulto.jpg"
-                alt="Remodelación Dormitorio Adulto"
-                className="w-full h-80 object-cover rounded-lg shadow-lg"
-              />
-            </div>
-            <div className="lg:w-1/2 space-y-6">
-              <h3 className="text-3xl font-bold text-primary">Dormitorio para Adulto</h3>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                Diseñamos dormitorios modernos y acogedores para adultos, priorizando el confort, la iluminación y el almacenamiento inteligente para un descanso pleno.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* Section Separator */}
-      <div className="h-16 bg-gradient-to-l from-accent/10 to-transparent"></div>
+      
 
       {/* portafolio Section */}
       <section id="portafolio" className="py-20 bg-background">
