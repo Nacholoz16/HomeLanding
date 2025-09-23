@@ -4,6 +4,8 @@ import Carousel from "@/components/Carousel";
 import { useEffect } from "react"
 import { ImgComparisonSlider } from "@img-comparison-slider/react";
 import Carousel_modal from "@/components/Carousel_modal";
+import FormularioContacto from "@/components/FormularioContacto";
+import { ToastContainer } from "react-toastify";
 
 const slides = [
   {
@@ -685,81 +687,8 @@ const Page = () => {
             </div>
 
             {/* Formulario Contacto */}
-            <div className="bg-background/10 backdrop-blur-sm p-8 rounded-lg">
-              <h3 className="text-2xl font-bold mb-6">Solicita tu Cotización Gratuita</h3>
-              <form className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-2">
-                    Nombre Completo
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    className="w-full px-4 py-3 bg-[#23272f] border border-primary-foreground/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent text-primary-foreground placeholder-primary-foreground/60"
-                    placeholder="Tu nombre completo"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    className="w-full px-4 py-3 bg-[#23272f] border border-primary-foreground/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent text-primary-foreground placeholder-primary-foreground/60"
-                    placeholder="tu@email.com"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium mb-2">
-                    Teléfono
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    className="w-full px-4 py-3 bg-[#23272f] border border-primary-foreground/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent text-primary-foreground placeholder-primary-foreground/60"
-                    placeholder="+1 (555) 123-4567"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="project" className="block text-sm font-medium mb-2">
-                    Tipo de Proyecto
-                  </label>
-                  <select
-                    id="project"
-                    name="project"
-                    className="w-full px-4 py-3 bg-[#23272f] border border-primary-foreground/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent text-primary-foreground"
-                  >
-                    <option value="">Selecciona un tipo de proyecto</option>
-                    <option value="cocina">Remodelación de Cocina</option>
-                    <option value="baño">Remodelación de Baño</option>
-                    <option value="integral">Remodelación Integral</option>
-                    <option value="otro">Otro</option>
-                  </select>
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium mb-2">
-                    Mensaje
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    className="w-full px-4 py-3 bg-[#23272f] border border-primary-foreground/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent text-primary-foreground placeholder-primary-foreground/60"
-                    placeholder="Cuéntanos sobre tu proyecto..."
-                  ></textarea>
-                </div>
-                <button
-                  type="submit"
-                  className="w-full bg-accent hover:bg-accent/90 text-accent-foreground py-3 px-6 rounded-lg font-semibold transition-colors duration-200"
-                >
-                  Enviar Solicitud
-                </button>
-              </form>
-            </div>
+            <FormularioContacto></FormularioContacto>
+            <ToastContainer position="top-right" autoClose={3000} />
           </div>
         </div>
       </section>
